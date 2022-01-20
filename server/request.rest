@@ -1,1 +1,7 @@
-GET http://localhost:3010/ HTTP/1.1
+GET http://localhost:3010/pupe HTTP/1.1
+
+###
+GET http://localhost:3010/animal/n. HTTP/1.1
+
+###
+GET http://localhost:3010/part-of-speech/n.?letter=c HTTP/1.1
