@@ -170,9 +170,9 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/dynamodb-dictionary-api/dev/1642872575692-2022-01-22T17:29:35.692Z/dynamodb-dictionary-api.zip"
+          "S3Key": "serverless/dynamodb-dictionary-api/dev/1642873347624-2022-01-22T17:42:27.624Z/dynamodb-dictionary-api.zip"
         },
-        "Handler": "build/index.handler",
+        "Handler": "build/app.handler",
         "Runtime": "nodejs14.x",
         "FunctionName": "dictionary",
         "MemorySize": 128,
@@ -188,14 +188,14 @@
         "ApiLogGroup"
       ]
     },
-    "ApiLambdaVersiongQZw8FU1Y5doBoOrrR4Nn50eTCry7cqUDE4o6iQgQE": {
+    "ApiLambdaVersionp9WSkgrBtnoqVwqUJWIxhuhCByM783RoQG1hkbpw": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "ApiLambdaFunction"
         },
-        "CodeSha256": "oHwvnv+uS84xsmjsz1rZXrUpqa/YsekhVUCL876uVqo="
+        "CodeSha256": "XFHBRmUpLDuE485Kme8m0/y3lPl1w/XoLwDlPnTo42g="
       }
     },
     "HttpApi": {
@@ -306,7 +306,7 @@
     "ApiLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "ApiLambdaVersiongQZw8FU1Y5doBoOrrR4Nn50eTCry7cqUDE4o6iQgQE"
+        "Ref": "ApiLambdaVersionp9WSkgrBtnoqVwqUJWIxhuhCByM783RoQG1hkbpw"
       },
       "Export": {
         "Name": "sls-dynamodb-dictionary-api-dev-ApiLambdaFunctionQualifiedArn"
