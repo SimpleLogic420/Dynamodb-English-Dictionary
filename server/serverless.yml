@@ -19,7 +19,7 @@ plugins:
   - serverless-iam-roles-per-function
 functions:
   api:
-    handler: build/index.handler
+    handler: src/index.handler
     name: dictionary
     memorySize: 128 # mb
     timeout: 15 # seconds
