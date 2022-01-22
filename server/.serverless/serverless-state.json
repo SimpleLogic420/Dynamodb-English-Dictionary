@@ -191,9 +191,9 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/dynamodb-dictionary-api/dev/1642873347624-2022-01-22T17:42:27.624Z/dynamodb-dictionary-api.zip"
+                "S3Key": "serverless/dynamodb-dictionary-api/dev/1642874321721-2022-01-22T17:58:41.721Z/dynamodb-dictionary-api.zip"
               },
-              "Handler": "build/app.handler",
+              "Handler": "build/index.handler",
               "Runtime": "nodejs14.x",
               "FunctionName": "dictionary",
               "MemorySize": 128,
@@ -209,14 +209,14 @@
               "ApiLogGroup"
             ]
           },
-          "ApiLambdaVersionp9WSkgrBtnoqVwqUJWIxhuhCByM783RoQG1hkbpw": {
+          "ApiLambdaVersionA9KrTzvXd2diONKq2NhNIkzSrScLOIvmVZaa6GU": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "ApiLambdaFunction"
               },
-              "CodeSha256": "XFHBRmUpLDuE485Kme8m0/y3lPl1w/XoLwDlPnTo42g="
+              "CodeSha256": "9QKkP6aqgT6Kna3j4MiFZqWP4yRzedSB5VqWUq79HF4="
             }
           },
           "HttpApi": {
@@ -324,7 +324,7 @@
           "ApiLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "ApiLambdaVersionp9WSkgrBtnoqVwqUJWIxhuhCByM783RoQG1hkbpw"
+              "Ref": "ApiLambdaVersionA9KrTzvXd2diONKq2NhNIkzSrScLOIvmVZaa6GU"
             },
             "Export": {
               "Name": "sls-dynamodb-dictionary-api-dev-ApiLambdaFunctionQualifiedArn"
@@ -456,7 +456,7 @@
     "pluginsData": {},
     "functions": {
       "api": {
-        "handler": "build/app.handler",
+        "handler": "build/index.handler",
         "name": "dictionary",
         "memorySize": 128,
         "timeout": 15,
@@ -470,7 +470,7 @@
         "memory": 128,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "ApiLambdaVersionp9WSkgrBtnoqVwqUJWIxhuhCByM783RoQG1hkbpw"
+        "versionLogicalId": "ApiLambdaVersionA9KrTzvXd2diONKq2NhNIkzSrScLOIvmVZaa6GU"
       }
     },
     "configValidationMode": "warn",
@@ -494,7 +494,7 @@
     "artifact": "C:\\Users\\ASUS\\Desktop\\Cyber4s_projects\\Dynamodb-English-Dictionary\\server\\.serverless\\dynamodb-dictionary-api.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/dynamodb-dictionary-api/dev/1642873347624-2022-01-22T17:42:27.624Z",
+    "artifactDirectoryName": "serverless/dynamodb-dictionary-api/dev/1642874321721-2022-01-22T17:58:41.721Z",
     "artifact": "dynamodb-dictionary-api.zip"
   }
 }

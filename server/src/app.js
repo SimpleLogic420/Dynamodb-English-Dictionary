@@ -1,6 +1,6 @@
 const express = require("express");
-const serverless = require("serverless");
 const cors = require("cors");
+const path = require("path");
 const errorHandler = require("./middleware/errorhandler");
 const router = require("./routes/dictionaryRoute");
 require("dotenv").config();
