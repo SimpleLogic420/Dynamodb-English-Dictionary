@@ -1,4 +1,5 @@
 const express = require("express");
+const serverless = require("serverless-http");
 const cors = require("cors");
 const errorHandler = require("./middleware/errorhandler");
 const router = require("./routes/dictionaryRoute");
@@ -9,4 +10,4 @@ app.use(cors());
 
 app.use("/", router);
 app.use(errorHandler);
-module.exports = app;
+module.exports.handler = serverless(app);

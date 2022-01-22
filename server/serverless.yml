@@ -1,0 +1,27 @@
+service: dynamodb-dictionary-api
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  stage: dev
+  region: eu-west-1
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - dynamodb:Query
+            - dynamodb:Scan
+            - dynamodb:GetItem
+          Resource: arn:aws:dynamodb:eu-south-1:369249767433:table/dictionary
+
+plugins:
+  - serverless-iam-roles-per-function
+functions:
+  api:
+    handler: build/index.handler
+    name: dictionary
+    memorySize: 128 # mb
+    timeout: 15 # seconds
+    events:
+      - httpApi: '*'
