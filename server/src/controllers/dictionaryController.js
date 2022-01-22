@@ -79,6 +79,8 @@ async function getRandomWord(req, res, next) {
       throw { status: 400, message: "pos does not exist" };
     if (!pos) return next("missing params");
     let { letter } = req.query;
+    console.log(letter);
+    console.log(pos);
     if (!letter) {
       letter = "";
     }
@@ -96,9 +98,11 @@ async function getRandomWord(req, res, next) {
       // Limit: 5,
     };
     const response = await docClient.scan(params).promise();
-    console.log(response);
+
     if (!response.Items) next("unrecognizable word");
     const randomNum = randNum();
+    console.log(randomNum);
+    console.log(response.Items);
     res.json(response.Items[randomNum]);
     res.end();
   } catch (err) {
@@ -107,7 +111,7 @@ async function getRandomWord(req, res, next) {
   }
 }
 const randNum = () => {
-  return Math.ceil(Math.random() * 1000);
+  return Math.ceil(Math.random() * 10);
 };
 function httpResponse(req, res, response) {
   // console.log(response.Items);

@@ -4,4 +4,4 @@ GET http://localhost:3010/remain HTTP/1.1
 GET http://localhost:3010/animal/n. HTTP/1.1
 
 ###
-GET http://localhost:3010/part-of-speech/noun?letter=b HTTP/1.1
+GET http://localhost:3010/part-of-speech/noun HTTP/1.1

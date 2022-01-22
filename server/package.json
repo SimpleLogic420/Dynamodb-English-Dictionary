@@ -11,7 +11,7 @@
   "author": "nadav_vol <simplelogic420@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.1060.0",
+    "aws-sdk": "^2.1062.0",
     "cors": "^2.8.5",
     "dotenv": "^14.2.0",
     "express": "^4.17.2",

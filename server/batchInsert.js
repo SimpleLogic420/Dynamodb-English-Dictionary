@@ -54,8 +54,8 @@ async function run() {
 }
 // run();
 const handler = async () => {
-  let counter = 93304;
-  for (let i = 93304; i < dictionary.length; i++) {
+  let counter = 102838;
+  for (let i = 102838; i < dictionary.length; i++) {
     await dynamodb
       .put({ TableName: "dictionary", Item: dictionary[i] })
       .promise()
