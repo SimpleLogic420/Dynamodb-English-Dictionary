@@ -1,5 +1,19 @@
 const docClient = require("./config");
 
+async function getAll(req, res) {
+  try {
+    const params = {
+      TableName: "dictionary",
+    };
+
+    const response = await docClient.scan(params).promise();
+
+    return res.send(response.Items);
+  } catch (err) {
+    console.log(err);
+    res.status(400).json(err);
+  }
+}
 async function getByWord(req, res) {
   try {
     const word = req.params.word;
@@ -11,7 +25,9 @@ async function getByWord(req, res) {
       },
     };
     const response = await docClient.query(params).promise();
-    return httpResponse(req, res, response);
+
+    // return httpResponse(req, res, response);
+    res.send(response);
   } catch (err) {
     console.log("error");
     res.status(400).json(err);
@@ -22,6 +38,7 @@ async function getWordAndPos(req, res, next) {
     const { word, partOfSpeech } = req.params;
     console.log(word);
     console.log(partOfSpeech);
+    console.log("ddddd");
     const params = {
       TableName: "dictionary",
       KeyConditionExpression: "word = :word and pos = :pos",
@@ -44,10 +61,23 @@ async function getWordAndPos(req, res, next) {
     next(error);
   }
 }
+const posConvert = {
+  noun: "n.",
+  verb: "v.",
+  adjective: "a.",
+  pronoun: "p,",
+};
 async function getRandomWord(req, res, next) {
   try {
-    const { part } = req.params;
-    if (!part) return next("missing params");
+    const { part: pos } = req.params;
+    if (
+      pos !== "noun" &&
+      pos !== "verb" &&
+      pos !== "adjective" &&
+      pos !== "pronoun"
+    )
+      throw { status: 400, message: "pos does not exist" };
+    if (!pos) return next("missing params");
     let { letter } = req.query;
     if (!letter) {
       letter = "";
@@ -61,24 +91,26 @@ async function getRandomWord(req, res, next) {
       },
       ExpressionAttributeValues: {
         ":letter": letter.toUpperCase(),
-        ":pos": part,
+        ":pos": posConvert[pos],
       },
-      Limit: 5,
+      // Limit: 5,
     };
     const response = await docClient.scan(params).promise();
+    console.log(response);
     if (!response.Items) next("unrecognizable word");
-    res.json(response.Items);
-    return httpResponse(req, res, response);
+    const randomNum = randNum();
+    res.json(response.Items[randomNum]);
+    res.end();
   } catch (err) {
     console.log("error");
     res.status(400).json(err);
   }
 }
 const randNum = () => {
-  return Math.ceil(Math.random() * 5);
+  return Math.ceil(Math.random() * 1000);
 };
 function httpResponse(req, res, response) {
-  console.log(response.Items);
+  // console.log(response.Items);
   switch (response.Count) {
     case 1:
       res.json(response.Items[0]);
@@ -99,4 +131,4 @@ function httpResponse(req, res, response) {
   }
 }
 
-module.exports = { getByWord, getWordAndPos, getRandomWord };
+module.exports = { getByWord, getWordAndPos, getRandomWord, getAll };
